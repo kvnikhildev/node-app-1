@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+              git branch: 'main', url: 'https://github.com/kvnikhildev/node-app-1.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'docker build -t node-app-1 .'
+                }
+            }
+        }
+
+        stage('Deploy Container') {
+            steps {
+                script {
+                  sh 'docker run -p 3000:3000 node-app-1 '
+                }
+            }
+        }
+    }
+}
