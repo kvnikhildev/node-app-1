@@ -1,5 +1,5 @@
 #node js base image 
-FROM node:14
+FROM node:20
 
 #set working directry 
 WORKDIR /app
@@ -15,4 +15,4 @@ COPY . .
 
 #expose port and srart app
 EXPOSE 3000
-CMD [ "node", "index.js"]
+CMD [ "npm", "start"]
